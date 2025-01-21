@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
 
       - name: Setup pnpm and modules
         run: |
@@ -35,7 +37,7 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      - name: Publish to npm
+      - name: Publish to npmjs
         run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.BITTE_AI_NPM_TOKEN }}

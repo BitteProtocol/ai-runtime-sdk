@@ -45,12 +45,6 @@ jobs:
       - name: Update version
         run: pnpm version prerelease --preid=dev-${GITHUB_SHA::6} --no-git-tag-version
 
-      # FIXME: remove
-      - name: Unpublish 1.0.0
-        run: npm unpublish @bitte-ai/runtime-sdk@1.0.0
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.BITTE_AI_NPM_TOKEN }}
-
       - name: Publish to npmjs
         run: pnpm publish --access public --no-git-checks --tag dev
         env:

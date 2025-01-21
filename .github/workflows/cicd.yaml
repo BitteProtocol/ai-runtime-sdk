@@ -1,9 +1,5 @@
 name: CICD
 
-# FIXME:
-# - Add API keys for OpenAI, Anthropic, XAI
-# - Add NEAR RPC URL
-
 on:
   push:
     branches: [main]

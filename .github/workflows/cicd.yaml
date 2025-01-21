@@ -35,4 +35,7 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      # TODO: push to npmjs
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.BITTE_AI_NPM_TOKEN }}

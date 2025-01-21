@@ -9,7 +9,7 @@ import {
 } from 'near-safe';
 import { z } from 'zod';
 import { getErrorMsg } from '../utils';
-import { BitteToolBuilder, NearNetworkId } from '../types';
+import { BitteToolBuilder, BitteToolResult, NearNetworkId } from '../types';
 
 type InitializeAdapterArgs = {
   accountId: string;
@@ -144,7 +144,18 @@ export const generateEvmTxPrimitive: BitteToolBuilder<
     },
     type: 'function',
   },
-  execute: async ({ accountId, evmAddress, method, chainId, params }) => {
+  execute: async ({
+    accountId,
+    evmAddress,
+    method,
+    chainId,
+    params,
+  }): Promise<
+    BitteToolResult<{
+      transactions?: Transaction[];
+      evmSignRequest: SafeEncodedSignRequest | SignRequestData;
+    }>
+  > => {
     try {
       const validatedSignRequest = SignRequestSchema.parse({
         method,

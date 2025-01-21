@@ -42,8 +42,11 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      # TODO: preview release for branches, manual tagged releases
+      - name: Update version
+        run: pnpm version prerelease --preid=dev-${GITHUB_SHA::6} --no-git-tag-version
+
       - name: Publish to npmjs
-        run: pnpm publish --access public --no-git-checks --tag development
+        run: pnpm publish --access public --no-git-checks --tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.BITTE_AI_NPM_TOKEN }}
+      # TODO:  manual tagged releases

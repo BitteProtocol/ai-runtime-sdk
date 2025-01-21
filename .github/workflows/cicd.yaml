@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'npm'
 
       - name: Setup pnpm and modules
         run: |

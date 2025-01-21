@@ -1,4 +1,4 @@
 // src/index.ts
-export function greet() {
+export function greet(): void {
   console.log('Hello from @bitte-ai/runtime-sdk!');
 }

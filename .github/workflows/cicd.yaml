@@ -42,7 +42,8 @@ jobs:
       - name: Build project
         run: pnpm run build
 
+      # TODO: preview release for branches, manual tagged releases
       - name: Publish to npmjs
-        run: pnpm publish
+        run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.BITTE_AI_NPM_TOKEN }}

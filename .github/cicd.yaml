@@ -1,0 +1,42 @@
+name: CICD
+
+# FIXME:
+# - Add API keys for OpenAI, Anthropic, XAI
+# - Add NEAR RPC URL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: ['*']
+
+jobs:
+  build:
+    name: CICD
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm and modules
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: Check format and lint
+        run: |
+          pnpm run format:check
+          pnpm run lint
+
+        # TODO: tests
+
+      - name: Build project
+        run: pnpm run build
+
+      # TODO: push to npmjs

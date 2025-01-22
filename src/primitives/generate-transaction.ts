@@ -17,7 +17,7 @@ import { FTS_METADATA } from '../data';
 const FINANCIAL_TRANSACTION_METHODS = ['ft_transfer'];
 const WARNING_PRICE = 100; // $100 USD
 
-type GenerateTransactionBuilderParams = {
+export type GenerateTransactionBuilderParams = {
   nearRpcUrl: string;
   nearNetworkId: NearNetworkId;
 };

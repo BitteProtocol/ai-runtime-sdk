@@ -9,7 +9,7 @@ import {
 const ARWEAVE_URL = 'https://arweave.net';
 const ARWEAVE_UPLOADER_URL = 'https://ar.mintbase.xyz';
 
-export const generateImage: BitteToolBuilder<
+export const generateImagePrimitive: BitteToolBuilder<
   { openaiApiKey: string },
   { prompt: string },
   GenerateImageResponse

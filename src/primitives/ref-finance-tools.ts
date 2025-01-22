@@ -1,5 +1,5 @@
 import { createExecutor } from '../tools';
-import { BitteTool, PluginToolSpec } from '../types';
+import { BitteToolBuilder, PluginToolSpec } from '../types';
 
 export const refFinanceToolSpecs: Record<string, PluginToolSpec> = {
   getSwapTransactions: {
@@ -63,17 +63,17 @@ export const refFinanceToolSpecs: Record<string, PluginToolSpec> = {
     verified: true,
   },
 };
-export const getSwapTransactions: BitteTool = {
+export const getSwapTransactionsPrimitive: BitteToolBuilder<void> = () => ({
   toolSpec: refFinanceToolSpecs.getSwapTransactions,
   execute: async (args, metadata) =>
     await createExecutor(refFinanceToolSpecs.getSwapTransactions)(
       args,
       metadata,
     ),
-};
+});
 
-export const getTokenMetadata: BitteTool = {
+export const getTokenMetadataPrimitive: BitteToolBuilder<void> = () => ({
   toolSpec: refFinanceToolSpecs.getTokenMetadata,
   execute: async (args, metadata) =>
     await createExecutor(refFinanceToolSpecs.getTokenMetadata)(args, metadata),
-};
+});
